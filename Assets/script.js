@@ -15,26 +15,36 @@ function writePassword() {
 }
 
 function generatePassword() {
+  //prompts for collecting password info
+  carList = []
   var passwordLength = prompt("How many characters would you like your password to be? (Must be grater than 8)");
   if (passwordLength < 8 || passwordLength > 120) {
     confirm("Your password must be between 8 and 120 characters.");
   }
   var specialCars = prompt("Would you like special charaters?");
   if (specialCars == "yes") {
-    specialCars = true;
+    carList += specialList
+    console.log(carList)
+
   }
   var upperCars = prompt("Would you like upper case charaters?");
   if (upperCars == "yes") {
-    upperCars = true;
+    carList += upperCaseList
+    console.log(carList)
   }
   var lowerCars = prompt("Would you like lower case charaters?");
   if (lowerCars == "yes") {
-    lowerCars = true;
+    carList += lowerCaseList
+    console.log(carList)
   }
-  var numbers = prompt("Would you like numbers in your password??");
+  var numbers = prompt("Would you like numbers in your password?");
   if (numbers == "yes") {
-    numbers = true;
+    carList += numberList
+    console.log(carList)
   }
+
+
+  //need a way to combine lists depending on user input
 }
 
 // Add event listener to generate button
