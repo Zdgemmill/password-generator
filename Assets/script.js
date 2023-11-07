@@ -5,18 +5,23 @@ var upperCaseList = lowerCaseList.toUpperCase();
 var specialList = "!@#$%^&*()_+"
 var numberList = "0123456789"
 
+function getRandomItem(str) {
+  return str[Math.floor(Math.random() * str.length)];
+}
+
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
-
 }
+
 
 function generatePassword() {
   //prompts for collecting password info
-  carList = []
+  var carList = []
+  var newPassword = []
   var passwordLength = prompt("How many characters would you like your password to be? (Must be grater than 8)");
   if (passwordLength < 8 || passwordLength > 120) {
     confirm("Your password must be between 8 and 120 characters.");
@@ -42,10 +47,19 @@ function generatePassword() {
     carList += numberList
     console.log(carList)
   }
+  //Loop for looping thropugh our carList array and generating a password. 
+  for (var i = 0; i < passwordLength; i++) {
+    newPassword[i] = getRandomItem(carList);
 
-
-  //need a way to combine lists depending on user input
+  }
+  var newPasswordStr = newPassword.join("");
+  console.log(newPasswordStr);
+  return newPasswordStr;
 }
+
+
+
+//need a way to combine lists depending on user input
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
